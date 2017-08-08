@@ -49,12 +49,11 @@ def get_iterator(args, kv):
     return (train, val)
 
 class Init(mx.init.Xavier):
-    def __init__(self, widen_factor=1, branch_factor=1, rnd_type="uniform", factor_type="avg", magnitude=3):
+    def __init__(self, rnd_type="uniform", factor_type="avg", magnitude=3):
         self.rnd_type = rnd_type
         self.factor_type = factor_type
         self.magnitude = float(magnitude)
-        self.branch_factor=branch_factor
-        self.widen_factor=widen_factor
+
 
     def __call__(self, name, arr):
         """Override () function to do Initialization
@@ -111,7 +110,7 @@ def train(args):
         optimizer='Nesterov', #'nag',
         initializer=mx.init.Mixed(['.*fc.*','.*'],
             [mx.init.Xavier(rnd_type='uniform', factor_type='in', magnitude=1),
-            Init(widen_factor=args.widen_factor, branch_factor=args.branch_factor,rnd_type='gaussian', factor_type='in', magnitude=2)]),
+            Init(rnd_type='gaussian', factor_type='in', magnitude=2)]),
         lr_scheduler=utility.Scheduler(epoch_step=args.lr_steps, factor=args.lr_factor, epoch_size=args.num_examples / args.batch_size),
         **args.model_args #for retrain
     )

@@ -57,7 +57,7 @@ def __dataset_args(args):
 def __logging_args(args):
     #make directories
     args.log_dir+=args.dataset+'_noaug/' if args.aug_type==0 else args.dataset+'/'
-    logfile_name='%s_d%dw%db%d'%(args.network,args.depth,args.widen_factor,args.branch_factor)
+    logfile_name='%s_d%dL%dM%d'%(args.network,args.depth,args.primary_partition,args.secondary_partition)
     #name of logging text file
     if args.model_prefix is None:
         args.model_prefix=args.log_dir+args.network+'/'

@@ -75,7 +75,7 @@ if args.rand_seed is None:
     args.rand_seed=int(time.time()) #different random init for serveral runs
 mx.random.seed(args.rand_seed)      #cudnn conv backward is non-deterministic
 exp_name=args.log_file[:args.log_file.rfind('.')]
-args.network='net_d%dw%db%d_'%(args.depth,args.widen_factor,args.branch_factor)+args.network+'/'+args.network+'_'+exp_name+'/'+args.network
+args.network='net_d%dL%dM%d_'%(args.depth,args.primary_partition,args.secondary_partition)+args.network+'/'+args.network+'_'+exp_name+'/'+args.network
 
 def get_iterator(args, kv):
     kargs = dict(
@@ -133,12 +133,10 @@ def get_iterator(args, kv):
     return (train, val)
 
 class Init(mx.init.Xavier):
-    def __init__(self, widen_factor=1,branch_factor=1,rnd_type="uniform", factor_type="avg", magnitude=3):
+    def __init__(self,rnd_type="uniform", factor_type="avg", magnitude=3):
         self.rnd_type = rnd_type
         self.factor_type = factor_type
         self.magnitude = float(magnitude)
-        self.widen_factor=widen_factor
-        self.branch_factor=branch_factor
 
     def __call__(self, name, arr):
         """Override () function to do Initialization
@@ -165,8 +163,6 @@ class Init(mx.init.Xavier):
             self._init_beta(name, arr)
         elif name.endswith('weight'):
             self._init_weight(name, arr)
-        elif name.endswith('weightfuse'):
-            self._init_weightfuse(name, arr)
         elif name.endswith("moving_mean"):
             self._init_zero(name, arr)
         elif name.endswith("moving_var"):
@@ -177,14 +173,6 @@ class Init(mx.init.Xavier):
             self._init_zero(name, arr)
         else:
             self._init_default(name, arr)
-
-    def _init_weightfuse(self, _, arr):
-        '''Initialization of shortcut of kenel (2, 2)'''
-        shape=arr.shape
-        #arr[:] = 1.0/shape[0]
-        factor =1.0 * shape[0];
-        scale = np.sqrt(1.0 / factor)
-        arr[:] = np.random.normal(0, scale, shape)
 
         
 class Scheduler(mx.lr_scheduler.MultiFactorScheduler):
@@ -374,7 +362,7 @@ def fit(args, network, data_loader, batch_end_callback=None):
         initializer=mx.init.Mixed(
             ['.*fc.*', '.*'],
             [mx.init.Xavier(rnd_type='uniform',  factor_type='in', magnitude=1),
-             Init(widen_factor=args.widen_factor,branch_factor=args.branch_factor,rnd_type='gaussian', factor_type='in', magnitude=2)]
+             Init(rnd_type='gaussian', factor_type='in', magnitude=2)]
         ),
         #lr_scheduler=Scheduler(epoch_step=[30, 60, 90, 120, 150, 180], factor=0.1, epoch_size=epoch_size),
         **model_args)
