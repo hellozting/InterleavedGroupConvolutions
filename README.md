@@ -15,7 +15,7 @@ In this work, we present a simple and modularized neural network architecture, n
 Our motivation comes from the four branch presentation of regular convolution illustrated in the following picture.
 
 ![RC](visualize/paper/regularconvmultibranch.png)
-> Four-branch representation of the regular convolution. The shaded part, we call crosssummation, is equivalent to a three-step transformation: permutation, secondary group convolution, and permutation back.
+> (a) Regular convolution. (b) Four-branch representation of the regular convolution. The shaded part in (b), we call crosssummation, is equivalent to a three-step transformation: permutation, secondary group convolution, and permutation back.
 
 ## Results
 
