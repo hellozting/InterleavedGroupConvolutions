@@ -1,7 +1,11 @@
-大标题
+Interleaved Group Convolutions
 ===================================
-大标题一般显示工程名,类似html的<h1><br />
-你只要在标题下面跟上=====即可
+This project contains the code implementation used for the experiments in the paper:
+
+>  Interleaved Group Convolutions. Ting Zhang, Guo-Jun Qi, Bin Xiao, and Jingdong Wang. In International Conference on Computer Vision (ICCV), 2017.
+
+If you use this code for research purposes, you should cite the aforementioned paper in any resulting publication.
+
 
 
 
@@ -21,12 +25,6 @@
 What is it?
 -----------
 
-This project contains the code implementation used for the experiments in the paper:
-
-      Interleaved Group Convolutions. 
-      In International Conference on Computer Vision (ICCV), 2017.
-
-If you use this code for research purposes, you should cite the aforementioned paper in any resulting publication.
 
 ------------------
 The latest version
