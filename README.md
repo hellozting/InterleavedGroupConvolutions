@@ -3,13 +3,14 @@
 This project contains the code implementation used for the experiments in the paper:
 
 >  Interleaved Group Convolutions. Ting Zhang, Guo-Jun Qi, Bin Xiao, and Jingdong Wang. In International Conference on Computer Vision (ICCV), 2017.
+arXiv preprint [arXIV:1707.02725](https://arxiv.org/pdf/1707.02725.pdf) (2017)
 
 If you use this code for research purposes, you should cite the aforementioned paper in any resulting publication.
 
 ## Introduction
 In this work, we present a simple and modularized neural network architecture, named interleaved group convolutional neural networks (IGCNets). The main point lies in a novel building block, a pair of two successive interleaved group convolutions: primary group convolution and secondary group convolution. The two group convolutions are complementary.
 
-![IGC](visualize/paper/igc.pdf)
+![IGC](visualize/paper/igc.png)
 
 
 
