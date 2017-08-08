@@ -45,7 +45,7 @@ python train_model.py --network=plain_igc --depth=38 --gpus=0,1 --primary-partit
 For example, running the following command can train the `resnet_igc_imgnet_d18` network on ImageNet.
 
 ```shell
-python train_imagenet.py --network=resnet_igc_imgnet_d18 --depth=18 --gpus=0,1,2,3,4,5,6,7 --primary_partition=100 --batch-size=256 --data-dir=<dataset location>
+python train_imagenet.py --network=resnet_igc_imgnet_d18 --depth=18 --gpus=0,1,2,3,4,5,6,7 --primary-partition=100 --batch-size=256 --data-dir=<dataset location>
 ```
 
 ## Citation
