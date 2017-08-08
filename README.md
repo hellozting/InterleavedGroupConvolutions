@@ -39,7 +39,7 @@ Current code supports training IGCNets on Cifar-10, Cifar-100 and SVHN, such as 
 For example, running the following command can train the `plain_igc` network on Cifar-10.
 
 ```shell
-python train_model.py --dataset=cifar10 --network=plain_igc --depth=38 --gpus=0,1 --data-dir=<dataset location> --primary-partition=24 --secondary-partition=2
+python train_model.py --network=plain_igc --depth=38 --gpus=0,1 --primary-partition=24 --secondary-partition=2 --batch-size=64 --data-dir=<dataset location> --dataset=cifar10
 ```
 
 For example, running the following command can train the `resnet_igc_imgnet_d18` network on ImageNet.
