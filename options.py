@@ -14,7 +14,7 @@ def get_network(args):
     import sys
     sys.path.insert(0,'network')
     net_module= importlib.import_module(args.network)
-    network= net_module.get_symbol(args.num_classes, args.depth, args.widen_factor, args.branch_factor)
+    network= net_module.get_symbol(args.num_classes, args.depth, args.primary_partition, args.secondary_partition)
     data_shape=(1, 3, args.data_shape, args.data_shape)
     logging.warning('network parameters: %s',utility.cal_params(network,input_shapes={"data":data_shape}))
     return network

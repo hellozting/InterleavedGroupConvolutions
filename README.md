@@ -15,32 +15,37 @@ In this work, we present a simple and modularized neural network architecture, n
 Our motivation comes from the four branch presentation of regular convolution illustrated in the following picture.
 
 ![RC](visualize/paper/regularconvmultibranch.png)
-> (a) Regular convolution. (b) Four-branch representation of the regular convolution. The shaded part in (b), we call crosssummation, is equivalent to a three-step transformation: permutation, secondary group convolution, and permutation back.
+> Four-branch representation of the regular convolution. The shaded part, we call crosssummation, is equivalent to a three-step transformation: permutation, secondary group convolution, and permutation back.
 
 ## Results
 
 ![ImageNet](visualize/paper/ImagenetResults.png)
->  Imagenet classiﬁcation results of a ResNet of depth 18 and our approach. The network structure for ResNet can be found in [10]. Both ResNets and our networks contain four stages, and when down-sampling is performed, the channel number is doubled. For ResNets, C is the channel number at the ﬁrst stage. For our networks except IGC-L100M2+Ident., we double the channel number by doubling M and keeping L unchanged. For IGCL100M2+Ident., we double the channel number by doubling L and keeping M unchanged. 
+>  Imagenet classiﬁcation results of a ResNet of depth 18 and our approach. Both ResNets and our networks contain four stages, and when down-sampling is performed, the channel number is doubled. For ResNets, C is the channel number at the ﬁrst stage. For our networks except IGC-L100M2+Ident., we double the channel number by doubling M and keeping L unchanged. For IGCL100M2+Ident., we double the channel number by doubling L and keeping M unchanged. 
 
 More results can be found in the paper.
 
 ## Requirements
 - Install [MXNet](https://github.com/apache/incubator-mxnet) on a machine (Windows, Linux, and Mac OS) with CUDA GPU and optional [cuDNN](https://developer.nvidia.com/cudnn).
 
-- Add the code in src/ to MXNet src/operator/
+- Add the code in `src/` to MXNet `src/operator/`
 
 - Build [MXNet](http://mxnet.io/how_to/index.html)
 
-- If you fail to apply the above patch, you can simply use [my MXNet repository](git@github.com:hellozting/mxnet.git)
+- If you fail to apply the above steps, you can simply use [my MXNet repository](https://github.com/hellozting/mxnet)
 
 ## How to Train
-
 Current code supports training IGCNets on Cifar-10, Cifar-100 and SVHN, such as `plain`, `resnet`, `plain_igc`,`resnet_igc`. All the networks are contained in the `network` folder.
 
 For example, running the following command can train the `plain_igc` network on Cifar-10.
 
 ```shell
-python train_model.py --dataset=cifar10 --network=plain_igc --depth=38 --gpus=0,1 --dataset=<dataset location>
+python train_model.py --dataset=cifar10 --network=plain_igc --depth=38 --gpus=0,1 --data-dir=<dataset location> --primary-partition=24 --secondary-partition=2
+```
+
+For example, running the following command can train the `resnet_igc_imgnet_d18` network on ImageNet.
+
+```shell
+python train_imagenet.py --network=resnet_igc_imgnet_d18 --depth=18 --gpus=0,1,2,3,4,5,6,7 --primary_partition=100 --batch-size=256 --data-dir=<dataset location>
 ```
 
 ## Citation
