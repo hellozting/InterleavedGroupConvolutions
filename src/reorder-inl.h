@@ -1,6 +1,4 @@
-/*
-Author: Liming Zhao (zlmzju@gmail.com)
-*/
+
 #ifndef MXNET_OPERATOR_REORDER_INL_H_ 
 #define MXNET_OPERATOR_REORDER_INL_H_
 
@@ -38,10 +36,7 @@ struct ReorderParam : public dmlc::Parameter<ReorderParam> {
   }
 };
 
-/**
- * \brief This is the implementation of fully connected operator.
- * \tparam xpu The device that the op will be executed on.
- */
+
 template<typename xpu, typename DType>
 class ReorderOp : public Operator {
  public:
@@ -268,62 +263,4 @@ class ReorderProp : public OperatorProperty {
 #endif
 }  // namespace op
 }  // namespace mxnet
-#endif  // MXNET_OPERATOR_WEIGHTED_FUSION_INL_H_
-
-/* python test code
-import mxnet as mx
-import numpy as np
-
-data0=mx.sym.Variable(name='data0')
-data1=mx.sym.Variable(name='data1')
-
-fuse=mx.sym.WeightedFusion(data0,data1,name='fuse')
-
-arg_names = fuse.list_arguments()
-
-#init data and weights
-data_shape=(1,1,2,2)
-dev=mx.gpu(4)
-
-args={}
-for name in arg_names:
-    if 'weight' in name:
-        args[name]=mx.nd.ones((1,1),ctx=dev)
-    else:
-        args[name]=mx.random.normal(0, 1, data_shape, ctx=dev)
-
-#forward check
-exe=fuse.bind(ctx=dev,args=args)
-exe.forward(is_train=False)
-out=exe.outputs[0].asnumpy()
-
-print '-'*50,'\nforward test\n'
-for name in args:
-    print name,':\n',args[name].asnumpy(),'\n'
-print 'forward output:\n',out,'\n\n'
-
-
-#gradient check
-dict_grad = {}
-
-for name in arg_names:
-    if 'weight' in name:
-        dict_grad[name] = mx.nd.empty((1,1),ctx=dev)
-    else:
-        dict_grad[name] = mx.nd.empty(data_shape,ctx=dev)
-
-exec1 = fuse.bind(ctx=dev,args=args,args_grad=dict_grad)
-out_grad = mx.random.normal(0, 1, data_shape, ctx=dev)
-exec1.backward([out_grad])
-
-print '-'*50,'\nbackward test\n'
-print 'outgrad:\n',out_grad.asnumpy(),'\n'
-
-out_grad_vec=out_grad.reshape((np.prod(data_shape),))
-for name in dict_grad:
-    print name,'grad :\n',dict_grad[name].asnumpy(),'\n'
-    if 'weight' in name:
-        data_name='data0' if '0' in name else 'data1'
-        data_vec=args[data_name].reshape((np.prod(data_shape),))
-        print name,'expected grad:\n',mx.nd.dot(out_grad_vec,data_vec).asnumpy(),'\n'
-*/
+#endif  // MXNET_OPERATOR_REORDER_INL_H_

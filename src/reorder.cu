@@ -1,6 +1,4 @@
-/* 
-Author: Liming Zhao (zlmzju@gmail.com)
-*/
+
 #include "./reorder-inl.h"
 namespace mxnet {
 namespace op {
