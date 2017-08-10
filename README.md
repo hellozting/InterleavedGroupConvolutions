@@ -19,7 +19,17 @@ Our motivation comes from the four branch presentation of regular convolution il
 
 ## Results
 
-![ImageNet](visualize/paper/ImagenetResults.png)
+|                    | #Params($\times M$) | FLOPs($\times 10^9$) | training error | test error    |
+|                    |                     |                      | top-1    top-5 | top-1    top-5|
+|--------------------|---------------------|----------------------|----------------|---------------|
+|ResNet($C=64$)      | 11.151              | 1.8                  | 22.41     6.53 | 31.06   11.38 |
+|ResNet($C=69$)      | 11.333              | 2.1                  | 21.43     5.96 | 30.58   10.77 |
+|IGC-$L4M32$+Ident.  | 11.205              | 1.9                  | 21.71     6.21 | 30.77   10.99 |
+|IGC-$L16M16$+Ident. | 11.329              | 2.2                  | 19.97     5.44 | 29.40   10.32 |
+|IGC-$L100M2$+Ident. | 8.61                | 1.3                  | 13.93     2.75 | 26.95    8.92 |
+
+
+
 >  Imagenet classiﬁcation results of a ResNet of depth 18 and our approach. Both ResNets and our networks contain four stages, and when down-sampling is performed, the channel number is doubled. For ResNets, C is the channel number at the ﬁrst stage. For our networks except IGC-L100M2+Ident., we double the channel number by doubling M and keeping L unchanged. For IGCL100M2+Ident., we double the channel number by doubling L and keeping M unchanged. 
 
 More results can be found in the paper.
