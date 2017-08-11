@@ -20,19 +20,16 @@ Our motivation comes from the four branch presentation of regular convolution il
 ## Results
 
 <table> 
-<tr> 
-<th>设备</th>
- <th>设备文件名</th> <th>文件描述符</th> <th>类型</th> </tr> 
- <tr> <th>键盘</th> <th>/dev/stdin</th> <th>0</th> <th>标准输入</th> </tr>
- <tr> <th>显示器</th> <th>/dev/stdout</th> <th>1</th> <th>标准输出</th> </tr>
- <tr> <th>显示器</th> <th>/dev/stderr</th> <th>2</th> <th>标准错误输出</th> </tr> 
+<tr> <th rowspan = 2></th><th rowspan=2>#Params($\times M$)</th> <th rowspan=2> FLOPs($\times 10^9$)</th> <th colspan=2>training error</th> <th colspan=2> test error </th> </tr> 
+ <tr> <th></th> <th> </th> <th> </th> <th> top-1 </th> <th> top-5 </th> <th> top-1 </th> <th> top-5 </th> </tr>
+ <tr> <th>ResNet($C=64$) </th> <th> 11.151</th> <th>1.8</th> <th>22.41</th> <th>6.53</th> <th>31.06</th> <th>11.38</th> </tr>
  </table>
 
 
 
 
 
-|                    | #Params($\times M$) | FLOPs($\times 10^9$) | training error | test error    |
+|                    |  | |  | test error    |
 |                    |                     |                      | top-1    top-5 | top-1    top-5|
 |--------------------|---------------------|----------------------|----------------|---------------|
 |ResNet($C=64$)      | 11.151              | 1.8                  | 22.41     6.53 | 31.06   11.38 |
