@@ -2,7 +2,6 @@
 Resnet with interleaved group convolutions
 '''
 import mxnet as mx
-from base_gcwf_noshare import FuseNet
 
 def get_conv(name, data, kout, kernel, stride, pad, relu=True):
     #Conv-BN-ReLU style
