@@ -1,4 +1,4 @@
-# Interleaved Group Convolutions
+﻿# Interleaved Group Convolutions
 
 This project contains the code implementation used for the experiments in the paper:
 
@@ -20,13 +20,13 @@ Our motivation comes from the four branch presentation of regular convolution il
 ## Results
 
 <table > 
-<tr> <th rowspan = 2 width=100></th><th rowspan=2>#Params($\times M$)</th> <th rowspan=2> FLOPs($\times 10^9$)</th> <th colspan=2>training error</th> <th colspan=2> test error </th> </tr> 
+<tr> <th rowspan = 2 width=100></th><th rowspan=2>#Params (M)</th> <th rowspan=2> FLOPs (10^9)</th> <th colspan=2>training error</th> <th colspan=2> test error </th> </tr> 
 <tr>  <th> top-1 </th> <th> top-5 </th> <th> top-1 </th> <th> top-5 </th> </tr>
-<tr> <th>ResNet($C=64$) </th> <th> 11.151</th> <th>1.8</th> <th>22.41</th> <th>6.53</th> <th>31.06</th> <th>11.38</th> </tr>
-<tr> <th>ResNet($C=69$) </th> <th> 11.333</th> <th>2.1</th> <th>21.43</th> <th>5.96</th> <th>30.58</th> <th>10.77</th> </tr>
-<tr> <th>IGC-$L4M32$+Ident. </th> <th> 11.205</th> <th>1.9</th> <th>21.71</th> <th>6.21</th> <th>30.77</th> <th>10.99</th> </tr>
-<tr> <th>IGC-$L16M16$+Ident. </th> <th> 11.329</th> <th>2.2</th> <th>19.97</th> <th>5.44</th> <th>29.40</th> <th>10.32</th> </tr>
-<tr> <th>IGC-$L100M2$+Ident. </th> <th> 8.61</th> <th>1.3</th> <th>13.93</th> <th>2.75</th> <th>26.95</th> <th>8.92</th> </tr>
+<tr> <th>ResNet(C=64) </th> <th> 11.151</th> <th>1.8</th> <th>22.41</th> <th>6.53</th> <th>31.06</th> <th>11.38</th> </tr>
+<tr> <th>ResNet(C=69) </th> <th> 11.333</th> <th>2.1</th> <th>21.43</th> <th>5.96</th> <th>30.58</th> <th>10.77</th> </tr>
+<tr> <th>IGC-L4M32+Ident. </th> <th> 11.205</th> <th>1.9</th> <th>21.71</th> <th>6.21</th> <th>30.77</th> <th>10.99</th> </tr>
+<tr> <th>IGC-L16M16+Ident. </th> <th> 11.329</th> <th>2.2</th> <th>19.97</th> <th>5.44</th> <th>29.40</th> <th>10.32</th> </tr>
+<tr> <th>IGC-L100M2+Ident. </th> <th> 8.61</th> <th>1.3</th> <th>13.93</th> <th>2.75</th> <th>26.95</th> <th>8.92</th> </tr>
  </table>
 
 
