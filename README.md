@@ -61,7 +61,7 @@ python train_imagenet.py --network=resnet_igc_imgnet_d18 --depth=18 --gpus=0,1,2
 
 ## Citation
 
-Please cite our papers on deep fusion in your publications if it helps your research:
+Please cite our papers in your publications if it helps your research:
 
 ```
 @article{WangWZZ16,
