@@ -1,5 +1,5 @@
 '''
-Resnet with interleaved group convolutions
+Resnet 
 '''
 import mxnet as mx
 
@@ -12,7 +12,7 @@ def get_conv(name, data, kout, kernel, stride, pad, relu=True):
     return data
 
 
-def get_two(name, data, kin, kout, primary_partition, secondary_partition):
+def get_two(name, data, kin, kout):
     data = get_conv(name+'_two1', data, kout, kernel=(3, 3), stride=(1,1) if kin==kout else (2, 2), pad=(1, 1))
     data = get_conv(name+'_two2', data, kout, kernel=(3, 3), stride=(1,1), pad=(1, 1), relu=False)
     return data

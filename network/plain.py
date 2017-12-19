@@ -1,5 +1,5 @@
 '''
-Plain network with interleaved group convolutions
+Plain network 
 '''
 import mxnet as mx
 
